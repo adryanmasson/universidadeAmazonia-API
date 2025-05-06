@@ -16,12 +16,9 @@ public class LoginController {
     }
 
     @PostMapping
-    public Map<String, String> login(@RequestBody Map<String, String> request) {
-        String email = request.get("email");
+    public Map<String, Object> login(@RequestBody Map<String, String> request) {
+        String identificador = request.get("identificador");
         String senha = request.get("senha");
-
-        String tipo = loginService.autenticar(email, senha);
-
-        return Map.of("tipo", tipo);
+        return loginService.autenticar(identificador, senha);
     }
 }
