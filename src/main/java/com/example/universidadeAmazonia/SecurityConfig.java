@@ -22,7 +22,7 @@ public class SecurityConfig {
         http
                 .csrf().disable() // desativa CSRF para testes (em produção: cuidado!)
                 .authorizeRequests()
-                .requestMatchers("/api/login").permitAll() // Libera o endpoint de login
+                .requestMatchers("/api/**").permitAll() // Libera o endpoint de login
                 .anyRequest().authenticated(); // Bloqueia o restante (ajustável depois)
 
         return http.build();
