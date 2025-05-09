@@ -18,4 +18,8 @@ public class AlunoService {
     public List<Map<String, Object>> listarMateriasPorRa(String ra) {
         return materiaAlunoRepository.buscarMateriasPorRaAluno(ra);
     }
+
+    public Map<String, Object> buscarNotasPorMateriaERa(String ra, Long idMateria) {
+        return materiaAlunoRepository.buscarNotasEMediaPorRaEMateria(ra, idMateria);
+    }
 }

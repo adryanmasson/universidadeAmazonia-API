@@ -20,4 +20,9 @@ public class AlunoController {
     public List<Map<String, Object>> listarMateriasPorRa(@PathVariable String ra) {
         return alunoService.listarMateriasPorRa(ra);
     }
+
+    @GetMapping("/{ra}/materias/{idMateria}/notas")
+    public Map<String, Object> buscarNotasDaMateria(@PathVariable String ra, @PathVariable Long idMateria) {
+        return alunoService.buscarNotasPorMateriaERa(ra, idMateria);
+    }
 }
