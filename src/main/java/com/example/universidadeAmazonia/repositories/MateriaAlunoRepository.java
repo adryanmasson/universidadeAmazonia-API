@@ -19,12 +19,12 @@ public interface MateriaAlunoRepository extends JpaRepository<MateriaAluno, Long
             "WHERE ma.idAluno.id = :idAluno AND ma.idMateria.id = :idMateria")
     void atualizarNotas(Long idAluno, Long idMateria, Double np1, Double np2, Double rep, Double exame);
 
-    @Query(value = """
-                SELECT m.id_materia AS id, m.nome AS nome, m.codigo AS codigo
-                FROM materia m
-                JOIN materia_aluno ma ON ma.id_materia = m.id_materia
-                JOIN usuario u ON u.id_usuario = ma.id_aluno
-                WHERE u.identificador = :ra
-            """, nativeQuery = true)
-    List<Map<String, Object>> buscarMateriasPorRaAluno(@Param("ra") String ra);
+@Query(value = """
+    SELECT m.id_materia AS id, m.nome AS nome
+    FROM materia m
+    JOIN materia_aluno ma ON ma.id_materia = m.id_materia
+    JOIN usuario u ON u.id_usuario = ma.id_aluno
+    WHERE u.identificador = :ra
+""", nativeQuery = true)
+List<Map<String, Object>> buscarMateriasPorRaAluno(@Param("ra") String ra);
 }
