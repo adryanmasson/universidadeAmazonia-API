@@ -11,7 +11,7 @@ import java.util.Map;
 public interface ProfessorRepository extends JpaRepository<Usuario, Long> {
 
     @Query(value = """
-                SELECT u.id_usuario AS id, u.nome AS nome, u.identificador AS ra
+                SELECT DISTINCT u.id_usuario AS id, u.nome AS nome, u.identificador AS ra
                 FROM usuario u
                 JOIN materia_aluno ma ON ma.id_aluno = u.id_usuario
                 JOIN materia_professor mp ON mp.id_materia = ma.id_materia
